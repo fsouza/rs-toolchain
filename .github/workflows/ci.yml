@@ -12,6 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3.1.0
 
+      - uses: actions/setup-node@v3.5.1
+        with:
+          node-version: 16
+          cache: npm
+
       - name: set npm config
         run: npm config set "//npm.pkg.github.com/:_authToken=${TOKEN}" -L project
         env:
