@@ -1,9 +1,9 @@
-name: 'rust-toolchain'
-description: 'Install the Rust toolchain'
-author: 'actions-rs team'
+name: "rs-toolchain"
+description: "Install the Rust toolchain"
+author: "actions-rs team"
 branding:
   icon: play-circle
-  color: black
+  color: gray-dark
 inputs:
   toolchain:
     description: |
@@ -18,10 +18,10 @@ inputs:
     required: false
   default:
     description: Set installed toolchain as default
-    default: false
+    default: "false"
   override:
     description: Set installed toolchain as an override for a directory
-    default: false
+    default: "false"
   profile:
     description: Name of the group of components to be installed for a new toolchain
     required: false
@@ -40,5 +40,5 @@ outputs:
     description: Installed rustup version
 
 runs:
-  using: 'node12'
-  main: 'dist/index.js'
+  using: "node12"
+  main: "dist/index.js"
