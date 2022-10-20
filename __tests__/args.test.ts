@@ -1,6 +1,6 @@
 import { getToolchainArgs } from "../src/args";
 import { morph } from "mock-env";
-import { sync as tempWriteSync } from "temp-write";
+import tempWrite from "temp-write";
 
 describe("actions-rs/toolchain", () => {
     it("Parses action input into toolchain options", () => {
@@ -38,7 +38,7 @@ describe("actions-rs/toolchain", () => {
     });
 
     it("prioritizes rust-toolchain file over input variable", function () {
-        const rustToolchainFile = tempWriteSync("1.39.0");
+        const rustToolchainFile = tempWrite.sync("1.39.0");
 
         const args = morph(
             () => {
@@ -53,7 +53,7 @@ describe("actions-rs/toolchain", () => {
     });
 
     it("uses rust-toolchain file if input does not exist", function () {
-        const rustToolchainFile = tempWriteSync("1.39.0");
+        const rustToolchainFile = tempWrite.sync("1.39.0");
 
         const args = morph(() => {
             return getToolchainArgs(rustToolchainFile);
@@ -63,7 +63,7 @@ describe("actions-rs/toolchain", () => {
     });
 
     it("trims content of the override file", function () {
-        const rustToolchainFile = tempWriteSync("\n     1.39.0\n\n\n\n");
+        const rustToolchainFile = tempWrite.sync("\n     1.39.0\n\n\n\n");
 
         const args = morph(() => {
             return getToolchainArgs(rustToolchainFile);
