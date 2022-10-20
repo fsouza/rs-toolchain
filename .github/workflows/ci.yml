@@ -12,6 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3.1.0
 
+      - name: set npm config
+        run: npm config set @actions-rs:registry "https://npm.pkg.github.com/:authToken=${TOKEN}"
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - run: npm ci
 
       - run: npm run build
