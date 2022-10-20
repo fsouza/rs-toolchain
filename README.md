@@ -165,5 +165,9 @@ Any contributions are welcomed!
 If you want to report a bug or have a feature request,
 check the [Contributing guide](https://github.com/actions-rs/.github/blob/master/CONTRIBUTING.md).
 
-You can also support author by funding the ongoing project work,
-see [Sponsoring](https://actions-rs.github.io/#sponsoring).
+rs-toolchain is a fork from the original toolchain action, you can also support
+the original author by funding the ongoing project work, see
+[Sponsoring](https://actions-rs.github.io/#sponsoring).
+
+Once the original project becomes maintained again, this fork will be
+abandoned.
