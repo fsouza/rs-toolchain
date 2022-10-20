@@ -1,0 +1,35 @@
+name: autobuild
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: autobuild
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3.1.0
+
+      - uses: actions/setup-node@v3.5.1
+        with:
+          node-version: v16
+
+      - name: set npm config
+        run: npm config set "//npm.pkg.github.com/:_authToken=${TOKEN}" -L project
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: npm ci
+
+      - name: set git config
+        run: |
+          git config user.name 'Github Actions'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+      - run: npm run build
+
+      - name: commit and push
+        run: |
+          if ! git diff --quiet dist; then git commit -m "Regen dist" dist && git push origin HEAD:main; fi
