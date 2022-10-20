@@ -5,6 +5,7 @@ updates:
     schedule:
       interval: daily
     versioning-strategy: increase
+    open-pull-requests-limit: 99
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
